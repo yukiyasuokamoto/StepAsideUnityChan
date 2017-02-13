@@ -18,8 +18,8 @@ public class ItemGenerator2 : MonoBehaviour {
 	}
 		void Update() {
 
-			// Unity ちゃん + 40m が作成済みの位置より大きくなったら1列生成
-			if( unitychan.transform.position.z + 40 > createdPos ) {
+			// Goalまでの間でUnity ちゃん + 40m が作成済みの位置より大きいくなったら1列生成
+		if( unitychan.transform.position.z + 40 > createdPos &&unitychan.transform.position.z + 40 <130 ) {
 				//どのアイテムを出すのかランダムに設定
 				int num=Random.Range(0,10);
 				if (num <= 1) {
@@ -39,11 +39,11 @@ public class ItemGenerator2 : MonoBehaviour {
 						if(1<=item&&item<=6){
 							//コインを生成
 							GameObject coin=Instantiate(coinprefab)as GameObject;
-						coin.transform.position=new Vector3(posRange*J, coin.transform.position.y, createdPos);
+						coin.transform.position=new Vector3(posRange*J, coin.transform.position.y, createdPos+offsetZ);
 						}else if(7<=item&&item<=9){
 							//車を生成
 							GameObject Car=Instantiate (CarPrefab) as GameObject;
-						Car.transform.position=new Vector3(posRange*J,CarPrefab.transform.position.y,createdPos);
+						Car.transform.position=new Vector3(posRange*J,CarPrefab.transform.position.y,createdPos+offsetZ);
 						}
 					}
 				}
